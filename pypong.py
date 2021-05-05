@@ -97,3 +97,44 @@ def apply_ball_movement():
 
     if ball_y_pos + ball_x_vel > HEIGHT or ball_y_pos + ball_y_vel < 0:
         ball_y_vel = -ball_y_vel
+
+    ball_x_pos += ball_x_vel
+    ball_y_pos =+ ball_y_vel
+
+pygame.display.set_caption("PyPong v1.0 Bata")
+screen.fill(BLACK)
+pygame.display.flip()
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            RUNNING = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+            if event.key == pygame.K_w:
+                p1_down = True
+            if event.key == pygame.K_s:
+                p1_down = True
+            if event.key == pygame.K_UP:
+                p2_up = True
+            if event.key == pygame.K_DOWN:
+                p2_down = True
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_w:
+                p1_down = False
+            if event.key == pygame.K_s:
+                p1_down = False
+            if event.key == pygame.K_UP:
+                p2_up = False
+            if event.key == pygame.K_DOWN:
+                p2_down = False
+
+        screen.fill(BLACK)
+        apply_player_movement()
+        apply_ball_movement()
+        draw_object()
+        pygame.display.flip()
+        pygame.time.wait(delay)
+
