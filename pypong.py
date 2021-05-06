@@ -60,10 +60,10 @@ def apply_player_movement():
     elif p1_down:
         p1_y_pos = min(p1_y_pos + paddle_speed, HEIGHT)
 
-        if p2_up:
-            p2_y_pos = max(p2_y_pos - paddle_speed, 0)
-        elif p2_down:
-            p2_y_pos = min(p2_y_pos + paddle_speed, HEIGHT)
+    if p2_up:
+        p2_y_pos = max(p2_y_pos - paddle_speed, 0)
+    elif p2_down:
+        p2_y_pos = min(p2_y_pos + paddle_speed, HEIGHT)
 
 
 def apply_ball_movement():
@@ -117,18 +117,18 @@ while running:
                 p1_up = True
             if event.key == pygame.K_s:
                 p1_down = True
-            if event.key == pygame.K_k:
+            if event.key == pygame.K_UP:
                 p2_up = True
-            if event.key == pygame.K_l:
+            if event.key == pygame.K_DOWN:
                 p2_down = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
                 p1_up = False
             if event.key == pygame.K_s:
                 p1_down = False
-            if event.key == pygame.K_k:
+            if event.key == pygame.K_UP:
                 p2_up = False
-            if event.key == pygame.K_l:
+            if event.key == pygame.K_DOWN:
                 p2_down = False
 
     screen.fill(BLACK)
