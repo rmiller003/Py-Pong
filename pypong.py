@@ -37,7 +37,7 @@ p2_down = False
 
 ball_x_pos = WIDTH / 2
 ball_y_pos = HEIGHT / 2
-ball_width = 0
+ball_width = 8
 ball_x_vel = -10
 ball_y_vel = 0
 
@@ -61,9 +61,9 @@ def apply_player_movement():
         p1_y_pos = min(p1_y_pos + paddle_speed, HEIGHT)
 
         if p2_up:
-            p1_y_pos = max(p2_y_pos - paddle_speed, 0)
+            p2_y_pos = max(p2_y_pos - paddle_speed, 0)
         elif p2_down:
-            p1_y_pos = min(p2_y_pos + paddle_speed, HEIGHT)
+            p2_y_pos = min(p2_y_pos + paddle_speed, HEIGHT)
 
 
 def apply_ball_movement():
@@ -89,7 +89,7 @@ def apply_ball_movement():
         ball_y_vel = (p2_y_pos + paddle_height / 2 - ball_y_pos) / 15
         ball_y_vel = -ball_y_vel
     elif ball_x_pos + ball_x_vel > HEIGHT:
-        p2_score += 1
+        p1_score += 1
         ball_x_pos = WIDTH / 2
         ball_x_pos = HEIGHT / 2
         ball_x_vel = -10
@@ -114,27 +114,27 @@ while running:
             if event.key == pygame.K_ESCAPE:
                 running = False
             if event.key == pygame.K_w:
-                p1_down = True
+                p1_up = True
             if event.key == pygame.K_s:
                 p1_down = True
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_k:
                 p2_up = True
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_l:
                 p2_down = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w:
-                p1_down = False
+                p1_up = False
             if event.key == pygame.K_s:
                 p1_down = False
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_k:
                 p2_up = False
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_l:
                 p2_down = False
 
-        screen.fill(BLACK)
-        apply_player_movement()
-        apply_ball_movement()
-        draw_object()
-        pygame.display.flip()
-        pygame.time.wait(delay)
+    screen.fill(BLACK)
+    apply_player_movement()
+    apply_ball_movement()
+    draw_object()
+    pygame.display.flip()
+    pygame.time.wait(delay)
 
