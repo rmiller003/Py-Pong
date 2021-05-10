@@ -8,8 +8,8 @@ import pygame
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 
-WIDTH = 600
-HEIGHT = 600
+WIDTH = 650
+HEIGHT = 650
 
 pygame.init()
 game_font = pygame.font.SysFont('Ubuntu', 40)
@@ -81,7 +81,7 @@ def apply_ball_movement():
     elif ball_x_pos + ball_x_vel < 0:
         p2_score += 1
         ball_x_pos = WIDTH / 2
-        ball_x_pos = HEIGHT / 2
+        ball_y_pos = HEIGHT / 2
         ball_x_vel = 10
         ball_y_vel = 0
     if (ball_x_pos + ball_x_vel > p2_x_pos - paddle_width) and (p2_y_pos < ball_y_pos + ball_y_vel + ball_width < p2_y_pos + paddle_height):
@@ -91,15 +91,15 @@ def apply_ball_movement():
     elif ball_x_pos + ball_x_vel > HEIGHT:
         p1_score += 1
         ball_x_pos = WIDTH / 2
-        ball_x_pos = HEIGHT / 2
+        ball_y_pos = HEIGHT / 2
         ball_x_vel = -10
         ball_y_vel = 0
 
-    if ball_y_pos + ball_x_vel > HEIGHT or ball_y_pos + ball_y_vel < 0:
+    if ball_y_pos + ball_y_vel > HEIGHT or ball_y_pos + ball_y_vel < 0:
         ball_y_vel = -ball_y_vel
 
     ball_x_pos += ball_x_vel
-    ball_y_pos =+ ball_y_vel
+    ball_y_pos += ball_y_vel
 
 pygame.display.set_caption("PyPong v1.0 Bata")
 screen.fill(BLACK)
