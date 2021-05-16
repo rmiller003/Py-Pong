@@ -4,6 +4,9 @@
 # constants and variables
 
 import pygame
+from pygame import mixer
+
+pygame.init()
 
 WHITE = (255,255,255)
 BLACK = (0,0,0)
@@ -104,6 +107,10 @@ def apply_ball_movement():
 pygame.display.set_caption("PyPong v1.0 Bata")
 screen.fill(BLACK)
 pygame.display.flip()
+
+# Background music
+mixer.music.load('Synthwave Loop.wav')
+mixer.music.play(-1)
 
 running = True
 while running:
