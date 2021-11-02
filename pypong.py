@@ -17,7 +17,7 @@ HEIGHT = 650
 pygame.init()
 game_font = pygame.font.SysFont('Ubuntu', 40)
 
-delay = 30
+delay = 12
 
 paddle_speed = 20
 
@@ -42,7 +42,7 @@ ball_x_pos = WIDTH / 2
 ball_y_pos = HEIGHT / 2
 ball_width = 8
 ball_x_vel = -10
-ball_y_vel = 0
+ball_y_vel = -0
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
